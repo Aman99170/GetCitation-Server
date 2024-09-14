@@ -10,12 +10,13 @@ router.post("/",[
     body('email').isEmail().withMessage('Invalid email address'),
     body('mobileNumber').isMobilePhone().withMessage('Invalid mobile number'),
     body('password').isLength({ min: 4 }).withMessage('Password must be at least 4 characters long'),
+    body('userType').notEmpty().withMessage('User type is required')
 ], async(req,res)=>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { firstName, lastName, email, mobileNumber, password } = req.body;
+    const { firstName, lastName, email, mobileNumber, password, userType } = req.body;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -27,7 +28,8 @@ router.post("/",[
             firstName,
             lastName,
             email,
-            mobileNumber,            
+            mobileNumber,  
+            userType,          
             password: hashedPassword,
         });
         await newUser.save();
