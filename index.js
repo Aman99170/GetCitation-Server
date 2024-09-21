@@ -21,6 +21,7 @@ import myReview from "./routes/myReviewForAOrder.js"
 import editReview from "./routes/editReview.js"
 import reviewWithUserDetails from "./routes/reviewWithUserDetails.js"
 import publicReviewWithUserDetails from "./routes/publicReviewWithUserDetails.js"
+import allResearchPapers from "./routes/getAllRP.js"
 
 const app = express()
 app.use(express.json())
@@ -81,6 +82,7 @@ app.use('/myReviewForAOrder',myReview)
 app.use('/editReview',editReview)
 app.use('/fetchReviewWithUserDetails',reviewWithUserDetails)
 app.use('/fetchPublicReviewWithUserDetails',publicReviewWithUserDetails)
+app.use('/getAllRP',allResearchPapers)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

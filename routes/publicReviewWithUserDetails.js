@@ -19,6 +19,16 @@ router.get('/', async (req, res) => {
       },
       {
         $limit: 4 // Limit to top 4 results
+      },
+      {
+        $project: {
+          'userDetails.password': 0, 
+          'userDetails.email': 0, 
+          'userDetails._id':0,
+          'userDetails.mobileNumber':0,
+          'userDetails.createdAt':0,
+          'userDetails.updatedAt':0,
+        }
       }
     ])
 
