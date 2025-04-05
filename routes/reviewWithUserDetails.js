@@ -4,7 +4,7 @@ import { Review } from '../db/models/Reviews.js';
 import {fetchUser} from "../middleware/fetchUser.js";
 import mongoose from 'mongoose';
 
-router.get('/', fetchUser, async (req, res) => {
+router.get('/:id', fetchUser, async (req, res) => {
   try {
     const loggedInUserId = new mongoose.Types.ObjectId(req.id);
     const reviewWithUserDetails = await Review.aggregate([
