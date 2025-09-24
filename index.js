@@ -28,9 +28,10 @@ app.use(express.json())
 // for prod
 // app.use(cors({
 //   origin: 'http://localhost:3000/', // Replace with your frontend URL
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-//   optionsSuccessStatus: 204
+//   // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   // allowedHeaders: ['Content-Type', 'Authorization'],
+//   // optionsSuccessStatus: 204,
+//   credentials: true
 // }));
 
 // app.use((req, res, next) => {
@@ -59,7 +60,7 @@ app.use(express.json())
 // Handle OPTIONS requests for preflight CORS requests
 // app.options('*', cors());
 // for dev
-app.use(cors())
+// app.use(cors())
 connectDB();
 dotenv.config();
 const port = process.env.port
